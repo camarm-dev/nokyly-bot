@@ -106,13 +106,15 @@ async def on_message(message):
     xp = await getlv(author)
     xp['xp'] = xp['xp'] + MESSAGE_XP
     if xp['xp'] >= xp['up']:
+        LEVELS_CHANNEL = await bot.fetch_channel(891421934586327090)
         xp['lv'] += 1
         xp['xp'] = 0
         xp['up'] = int(xp['up'] * LEVEL_UP)
         em = discord.Embed(title="Nokyly Levels", description="", color=0x00a8ff)
         em.add_field(name=f"{message.author.name}, tu est maintenant level {xp['lv']} !",
                      value=f"{message.author.mention}, prochain niveau: 0/{xp['up']}xp")
-        await message.channel.send(embed=em)
+        await LEVELS_CHANNEL.send(embed=em)
+        await LEVELS_CHANNEL.send(message.author.mention)
     await writelv(author, xp)
     if message.content == '.rank':
         rank = await getrank(author)
@@ -141,3 +143,4 @@ async def on_message(message):
         await message.channel.send(embed=em)
 
 
+bot.run('ODkxMjQ0NDUyMDY3MjkxMTQ3.YU7iEw.Set1HQI1qSEfGTwWktWe9JA5hcU')
