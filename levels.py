@@ -141,6 +141,3 @@ async def on_message(message):
                                                                                   '.webp?size=96')
         em.set_thumbnail(url=str(message.guild.icon))
         await message.channel.send(embed=em)
-
-
-bot.run('ODkxMjQ0NDUyMDY3MjkxMTQ3.YU7iEw.Set1HQI1qSEfGTwWktWe9JA5hcU')
